@@ -1,11 +1,7 @@
-// src/routes/webhook.routes.js
 import express from "express";
 import axios from "axios";
 import ResponseModel from "../models/response.js";
-
 const router = express.Router();
-
-// 1️⃣ Create webhook in Airtable
 router.post("/airtable/webhook/create", async (req, res) => {
   try {
     const result = await axios.post(
@@ -18,8 +14,6 @@ router.post("/airtable/webhook/create", async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 });
-
-// 2️⃣ Receive webhook events from Airtable
 router.post("/airtable", async (req, res) => {
   console.log("Webhook received:", req.body);
 
